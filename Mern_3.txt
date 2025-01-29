@@ -1,0 +1,302 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import Display from './Display'
+import Datas from './Datas'
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+  <Datas/>
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+===================================
+import Display from "./Display"
+
+function Datas()
+{
+    let name='sai'
+    const ans=my name is ${name}
+    return(
+        <>
+        <h1>my name is  {name}</h1>
+        <h1>  {ans} </h1>
+       <Display />
+        </>
+    )
+}
+export default Datas
+======================================
+function Display( )
+{
+  
+    return (
+        <>
+        <h1>im coming from Datas.js  </h1>
+        <h3>this is from display</h3>
+        <h4>im the sec line</h4>
+        </>
+    )
+}
+export default Display
+=======================================
+props
+
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import Display from './Display'
+import Datas from './Datas'
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+  <Datas/>
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+import Display from "./Display"
+
+function Datas()
+{
+    let name='sai'
+    const ans=my name is ${name}
+    return(
+        <>
+        <h1>my name is  {name}</h1>
+        <h1>  {ans} </h1>
+       <Display n={name} />
+        </>
+    )
+}
+export default Datas
+function Display(values)
+{
+  
+    const {n}=values
+    return (
+        <>
+        <h1>im coming from Datas.js {n} </h1>
+        <h3>this is from display</h3>
+        <h4>im the sec line</h4>
+        </>
+    )
+}
+export default Display
+
+import Display from "./Display"
+
+function Datas()
+{
+    const person={
+        empName:'dena',
+        city:'cbe'
+
+    }
+    let name='sai'
+    let roll=12
+    const ans=my name is ${name}
+    return(
+        <>
+        <h1>my name is  {name}</h1>
+        <h1>  {ans} </h1>
+       <Display n={name} roll={roll} gender='male' obj={person}/>
+        </>
+    )
+}
+export default Datas
+
+function Display(values) 
+{
+  
+    const {n, roll,gender, obj}=values
+    const {empName,city}=obj
+    return (
+        <>
+        <h1>im coming from Datas.js {n} {roll} {gender} </h1>
+        <h2>{empName}, {city}</h2>
+        <h3>this is from display</h3>
+        <h4>im the sec line</h4>
+        </>
+    )
+}
+export default Display
+
+import React from "react"
+class MyClass extends React.Component{
+    render(){
+
+        return (
+            <>
+            <h1> im from the class</h1>
+            <h1> im from the class hai welcome</h1>
+            </>
+        )
+    }
+}
+
+export default MyClass
+export default  function Test ()
+{
+  
+    
+    
+    return (
+        <>
+        <h1>im  from the test</h1>
+         
+        <h4>im the sec line</h4>
+        </>
+    )
+}
+export default function States(){
+    var clr='blue'
+    console.log("b4  : ",clr)
+     function change()
+     {
+        clr='red'
+
+        console.log('after.......',clr)
+        
+     }
+     
+  
+    return(
+        <>
+        <h1>i love {clr} color</h1>
+        <button onClick={change}>click here!! </button>
+        </>
+    )
+}
+export default function States(){
+    var clr='blue'
+    console.log("b4  : ",clr)
+      
+    return(
+        <>
+        <h1>i love {clr} color</h1>
+        <button onClick={()=>{
+             clr='red'
+             console.log('after.......',clr)
+        }}>click here!! </button>
+        </>
+    )
+}
+
+import { useState } from "react"
+
+export default function States(){
+    //var clr='blue'
+    var [clr,setClr]= useState('blue')
+    console.log("b4  : ",clr)
+      
+    return(
+        <>
+        <h1>i love {clr} color</h1>
+        <button onClick={()=>{setClr(clr='red')} }>click here!! </button>
+        </>
+    )
+}
+
+import { useState } from "react"
+
+export default function States(){
+    
+    var [clr,setClr]= useState('blue')
+    var [name,setName]= useState('sai')
+     
+    return(
+        <>
+        <h1> my name is {name} <br></br>i love {clr} color</h1>
+        <button onClick={()=>{ setClr('red') ; setName('demo')}
+            }>click here!! </button>
+        </>
+    )
+}
+import { useState } from "react"
+
+export default function States(){
+    
+    // var [clr,setClr]= useState('blue')
+    // var [name,setName]= useState('sai')
+     var [data,setData]=useState(
+        {
+            clr:'pink',
+            name:'sai'
+        }
+     )
+     
+    return(
+        <>
+        <h1> my name is {data.name}<br></br> i love {data.clr} color</h1>
+        <button onClick={()=>{ setData(
+            {
+                
+                    clr:'green',
+                    name:'ram'
+                 
+            }
+        )}
+            }>click here!! </button>
+        </>
+    )
+}
+
+import { useState } from "react"
+
+export default function States(){
+    const updateClr=()=>{
+        setData( {...data,
+               clr:'gray'
+        })
+    }
+     
+    const updateName=()=>{
+        setData( {...data,
+               name:'arun'
+        })
+    }
+     
+
+     var [data,setData]=useState(
+        {
+            clr:'pink',
+            name:'sai'
+        }
+     )
+
+     
+    return(
+        <>
+        <h1> my name is {data.name}<br></br> i love {data.clr} color</h1>
+        <button onClick={()=>{ setData(
+            {
+                
+                    clr:'green',
+                    name:'ram'
+                 
+            }
+        )}
+            }>click here!! </button> <br/><br/>
+
+<button onClick={()=>{ updateClr() }
+            }>update the clr!! </button> <br/><br/>
+
+
+<button onClick={()=>{ updateName() }
+            }>update the name!! </button>
+        </>
+    )
+}

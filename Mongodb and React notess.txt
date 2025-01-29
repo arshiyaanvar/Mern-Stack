@@ -1,0 +1,190 @@
+show dbs
+use stu
+db.students.insertOne({name:'Ram',roll:17})
+db.students.find()
+db.students.insertMany([{name:'Madhu',roll:1},{name:'Arshi',roll:2},{name:'Shwetha',roll:3},{name:'Ravi',roll:4}])
+
+stu>db.students.find().toArray()
+stu>db.students.find().forEach((d)=>print('the data is',d))
+
+
+=============================================================================================================
+To Connect Mongo db:
+
+create a folder => go to the path=> type cmd -creates n mongodb
+after that in mongodb type => code .   which => opens vscode
+ 
+then in vs code :
+npm i --s express express-handlebars body-parser 
+
+npm i -g nodemon 
+=> to prevent restart mannualy
+
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+1.express
+
+purpose: express is a fast ,minimalist web framework for Node.js.It provides tools to build web applications and APIs.
+  usage:
+           to handle HTTP requests and responses
+           to create routes for different endpoints(e.g., GET,POST,PUT,DELETE)
+           to integrate middleware for processing requests.
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+2.express-handlebars
+
+purpose: This package is an Express.js template engine for rendering dynamic HTML pages using Handlebars syntax.
+ usage:
+          to serve dynamic content by combining HTML templates with JavaScript data.
+         to create reusable components like headers,footers,etc., using Handlebars partials
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+3. body-parser
+ purpose: body-parser is a middleware that parses incoming request bodies in a middleware before your handlers,making 
+
+
+
+
+===================================================================================================================
+
+Folder-viewsfold
+=>maincopy.hbs
+app.js
+===================================================================================================================
+
+
+
+code for maincopy.hbs:
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>MONGODB CRUD</title>
+    </head>
+
+    <body>
+    <h1>MONGO CRUD</h1>
+    <p>{{msg}}</p>
+    </body>
+    
+</html>
+
+===================================================================================================================
+CODE FOR app.js:
+
+const  express=require('express');
+const exhbs=require('express-handlebars');
+const app=express();
+app.engine('hbs',
+    exhbs.engine({
+        layoutsDir:'viewsfold/',
+        defaultLayout:'maincopy',
+        extname:'hbs',
+    })
+);
+app.set('view engine','hbs')
+app.set('views','viewsfold');
+
+//Routes
+app.get('/',(req,res)=> {
+    const msg = 'test';
+    res.render('maincopy', {msg});
+});
+// start the server
+app.listen(8000, () => {
+    console.log('Listening on port 8000...');
+});
+
+TERMINAL CODES TO RUN:
+
+npm i --s express express-handlebars body-parser 
+npm i -g nodemon
+
+nodemon appcopy.js
+
+====================================================================================================
+TO CONNECT MONGODB AND NODEJS:
+
+npm i mongodb => install mongodb driver
+
+
+=====================================================================================================
+FOR MONGODB AND NODE JS CONNECTION VScodes
+
+Folder=> viewsfold
+-maincopy.hbs
+app.js
+db.js
+
+========================================================================================
+
+CODE FOR maincopy.hbs:
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>MONGODB CRUD</title>
+    </head>
+    <body>
+        <h1>MONGODB CRUD</h1>
+        <ul>
+            {{#each datas}}
+            <li>{{this.name}} {{this.roll}}</li>
+            {{/each}}
+        </ul>
+        <p>{{msg}}</p>
+    </body>
+</html>
+
+=======================================================================================
+CODE FOR app.js:
+
+const  express=require('express');
+const exhbs=require('express-handlebars');
+const app=express();
+const dbo=require('./db')
+app.engine('hbs',
+    exhbs.engine({
+        layoutsDir:'viewsfold/',
+        defaultLayout:'maincopy',
+        extname:'hbs',
+    })
+);
+app.set('view engine','hbs')
+app.set('views','viewsfold');
+//Routes
+app.get('/',async (req,res)=>{
+    let database= await dbo.getDatabase();
+    const collection=database.collection('emp');
+    const cursur=collection.find({});
+    let datas=await cursur.toArray()
+    const msg='Hello';
+    console.log('the data',datas);
+    res.render('maincopy',{msg,datas});
+});
+
+app.listen(8000,()=>{
+    console.log('Listening on port 8000.....');
+});
+
+=======================================================================================
+CODE FOR db.js:
+
+const mongodb=require ('mongodb');
+const mongoClient=mongodb.MongoClient;
+let database;
+async function getDatabase(){
+    const client= await mongoClient.connect('mongodb://127.0.0.1:27017');
+    database=client.db('t1');
+    if(!database){
+        console.log('Database connected successfully');
+    }
+    else{
+        console.log('Database connection failed:');}
+    return database;
+}
+module.exports={getDatabase};
+
+
+
+
+
+

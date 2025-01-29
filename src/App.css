@@ -1,0 +1,48 @@
+/* App.css: Global styles with transitions and gradients */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #f4e1f7, #ffffff); /* Gradient from light purple to white */
+  color: #121212; /* Dark text color */
+}
+
+header {
+  background: linear-gradient(to right, #6a1b9a, #8e24aa); /* Gradient purple */
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 2px -2px gray;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+header:hover {
+  box-shadow: 0 8px 6px -2px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+header h1 {
+  font-size: 32px;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  color: #ffccff; /* Soft pink for hover */
+}

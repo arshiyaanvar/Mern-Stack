@@ -1,0 +1,27 @@
+/* About.css: Styles for About Section with gradients */
+
+#about {
+  background: linear-gradient(to right, #e9d7f5, #ffffff); /* Light purple gradient */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#about:hover {
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+#about h2 {
+  color: #6a1b9a; /* Deep purple */
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
+}
+
+#about p {
+  font-size: 18px;
+  color: #333333; /* Dark gray */
+  line-height: 1.6;
+}

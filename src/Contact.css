@@ -1,0 +1,48 @@
+/* Contact.css: Styles for Contact Section with gradients */
+
+#contact {
+  padding: 40px;
+  background: linear-gradient(to bottom, #e9d7f5, #ffffff); /* Light purple gradient */
+  border-radius: 8px;
+}
+
+#contact h2 {
+  color: #6a1b9a; /* Deep purple */
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input, form textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #6a1b9a; /* Purple border */
+  border-radius: 4px;
+  background-color: white;
+  color: #333333; /* Dark text */
+  transition: box-shadow 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+  box-shadow: 0 0 8px #6a1b9a; /* Glow on focus */
+}
+
+form button {
+  padding: 10px;
+  background: linear-gradient(to right, #6a1b9a, #8e24aa); /* Gradient button */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+  background: linear-gradient(to right, #ff99cc, #d1c4e9); /* Pink-purple gradient */
+  transform: scale(1.05); /* Slight zoom */
+}
